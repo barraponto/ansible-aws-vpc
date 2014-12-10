@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: Capi Etheriel
+  description: Spins up a very basic VPC with subnets
+  company: Boomage
+  license: proprietary
+  min_ansible_version: 1.2
+  categories:
+    - cloud
+    - cloud:ec2
+dependencies: []
