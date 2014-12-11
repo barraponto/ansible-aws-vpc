@@ -1,7 +1,7 @@
 ---
 # tasks file for aws_vpc
 - name: Ready up the {{ aws_vpc_cidr_block }} VPC
-  register: aws_vpc_register
+  register: aws_vpc_vpc
   ec2_vpc:
     region: "{{ aws_vpc_region }}"
     cidr_block: "{{ aws_vpc_cidr_block }}"
