@@ -1,4 +1,5 @@
 ---
 # vars file for aws_vpc
+aws_vpc_register_as: boomage_vpc
 aws_vpc_igw_enabled_subnets: "{{
-  aws_vpc_subnets |select(attribute='internet_gateway') |list }}"
+  aws_vpc_subnets|select(attribute='internet_gateway')|list }}"
