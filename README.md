@@ -30,11 +30,6 @@ aws_vpc_subnets:
       ProvisionedBy: Ansible
 ```
 
-Role Facts
-----------
-
-For convenience, the VPC data is made available as a fact under `aws_vpc_vpc`
-
 Example Playbook
 ----------------
 
@@ -44,12 +39,12 @@ This role can be run locally, from the localhost server.
       roles:
          - barraponto.aws_vpc
 
-By default, it will set VPC data as a fact under the key `aws_vpc_vpc`.
+By default, it will register the default VPC under `aws_vpc_vpc`.
 Should you need to operate in several VPCs in your playbook, the recommended
 way right now would be to copy the role and rename it accordingly and
-modifying the `set_fact` declared in `tasks/main.yml`.
+modifying the register variable declared in `tasks/main.yml`.
 
-Parameterizing the `set_fact` variable is a pending issue.
+Parameterizing the register variable is a pending issue.
 If you can contribute to it, please drop by the issue queue.
 
 License

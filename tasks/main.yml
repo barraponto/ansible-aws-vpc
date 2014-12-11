@@ -10,6 +10,3 @@
     wait: true
     subnets: "{{ aws_vpc_subnets }}"
     route_tables: "{{ aws_vpc_route_tables }}"
-- name: Set {{ aws_vpc_cidr_block }} VPC data as a fact
-  set_fact:
-    aws_vpc_vpc: aws_vpc_register.results[0]
