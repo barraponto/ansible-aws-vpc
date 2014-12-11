@@ -1,31 +1,56 @@
-Role Name
-=========
+AWS VPC
+=======
 
-A brief description of the role goes here.
+AWS VPC is a stub for defining AWS VPCs with minimal effort.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Depends on Python boto module, install with `pip install boto`.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Most variables come predictably from the [ec2_vpc module][1].
+Internet Gateway route tables are automatically set up for subnets that
+declare `internet_gateway` -- as long as you keep that magic route table
+defined in `vars/main.yml`.
 
-Dependencies
-------------
+```yaml
+aws_vpc_cidr_block: 172.0.0.0/16
+aws_vpc_region: us-east-1
+aws_vpc_resource_tags:
+  Name: Default VPC
+  ProvisionedBy: Ansible
+aws_vpc_subnets:
+  - cidr_block: 172.0.0.0/24
+    internet_gateway: true
+    resource_tags:
+      Name: Default Subnet
+      ProvisionedBy: Ansible
+```
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Role Facts
+----------
+
+For convenience, the VPC data is made available as a fact under `aws_vpc_vpc`
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+This role can be run locally, from the localhost server.
 
-    - hosts: servers
+    - hosts: localhost
       roles:
-         - { role: username.rolename, x: 42 }
+         - barraponto.aws_vpc
+
+By default, it will set VPC data as a fact under the key `aws_vpc_vpc`.
+Should you need to operate in several VPCs in your playbook, the recommended
+way right now would be to copy the role and rename it accordingly and
+modifying the `set_fact` declared in `tasks/main.yml`.
+
+Parameterizing the `set_fact` variable is a pending issue.
+If you can contribute to it, please drop by the issue queue.
 
 License
 -------
@@ -35,4 +60,5 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Please leave any support requests, bug reports or feature proposals in
+Github Issue Queue: https://github.com/barraponto/ansible-aws-vpc

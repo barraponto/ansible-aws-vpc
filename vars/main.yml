@@ -1,2 +1,32 @@
 ---
 # vars file for aws_vpc
+#
+##############################################################################
+# This is sample configuration, see README.md for more details on each value:
+##############################################################################
+#
+# aws_vpc_cidr_block: 172.0.0.0/16
+# aws_vpc_region: us-east-1
+# aws_vpc_resource_tags:
+#   Name: Default VPC
+#   ProvisionedBy: Ansible
+# aws_vpc_subnets:
+#   - cidr_block: 172.0.0.0/24
+#     internet_gateway: true
+#     resource_tags:
+#       Name: Default Subnet
+#       ProvisionedBy: Ansible
+#
+##############################################################################
+# ROUTE TABLES
+#
+# Add your own route tables to the ones already defined here.
+# It automatically sets up internet gateway routes for subnets declaring
+# `internet_gateway: true`. See defaults/main.yml for the implementation of
+# `aws_vpc_igw_enabled_subnets_cidr`.
+##############################################################################
+aws_vpc_route_tables:
+  - subnets: "{{ aws_vpc_igw_enabled_subnets_cidr }}"
+    routes:
+      - dest: 0.0.0.0/0
+        gw: igw

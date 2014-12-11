@@ -2,22 +2,6 @@
 # defaults file for aws_vpc
 #
 ##############################################################################
-# This is sample configuration, see README.md for more details on each value:
-##############################################################################
-#
-# aws_vpc_cidr_block: 172.0.0.0/16
-# aws_vpc_region: us-east-1
-# aws_vpc_resource_tags:
-#   Name: Default VPC
-#   ProvisionedBy: Ansible
-# aws_vpc_subnets:
-#   - cidr_block: 172.0.0.0/24
-#     internet_gateway: true
-#     resource_tags:
-#       Name: Default Subnet
-#       ProvisionedBy: Ansible
-#
-##############################################################################
 # These are derivate variables used within tasks/main.yml.
 # You should probably not touch those.
 ##############################################################################
