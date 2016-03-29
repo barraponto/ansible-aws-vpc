@@ -6,6 +6,6 @@
 # You should probably not touch those.
 ##############################################################################
 aws_vpc_igw_enabled_subnets: "{{
-  aws_vpc_subnets|select(attribute='internet_gateway')|list }}"
+  aws_vpc_subnets|selectattr('internet_gateway','equalto',true)|list }}"
 aws_vpc_igw_enabled_subnets_cidr: "{{
   aws_vpc_igw_enabled_subnets|map(attribute='cidr')|list }}"
