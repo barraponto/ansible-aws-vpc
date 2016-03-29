@@ -23,7 +23,7 @@ aws_vpc_resource_tags:
   Name: Default VPC
   ProvisionedBy: Ansible
 aws_vpc_subnets:
-  - cidr_block: 172.0.0.0/24
+  - cidr: 172.0.0.0/24
     internet_gateway: true
     resource_tags:
       Name: Default Subnet
